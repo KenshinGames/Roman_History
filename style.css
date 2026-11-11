@@ -1,0 +1,360 @@
+/* レイアウト：スマホ幅の1列。上に切替タブ、下に「今日の三問」か「年表」。
+   年表は街道に見立てた1本の線に、モザイクの石（四角い印）を並べる。 */
+:root {
+  --stone: #e7e9ea;          /* 大理石の地 */
+  --surface: #f6f7f7;
+  --ink: #1b2130;
+  --muted: #5b6472;
+  --line: #c6ccd2;
+  --porphyry: #7b2d4f;       /* 皇帝の石、斑岩の赤紫 */
+  --porphyry-soft: #efdce4;
+  --on-porphyry: #ffffff;
+  --verdigris: #1c6f63;      /* 青銅の緑青 */
+  --verdigris-soft: #d6ebe7;
+  --rust: #a23f28;
+  --rust-soft: #f3ddd6;
+
+  --font-latin: "Cinzel", "Trajan Pro", "Times New Roman", serif;
+  --font-display: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-body: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.1875rem;
+  --step-2: 1.5rem;
+  --step-3: 2rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --stone: #12151b;
+    --surface: #1b2028;
+    --ink: #e8eaed;
+    --muted: #9aa3af;
+    --line: #333b47;
+    --porphyry: #e293b4;
+    --porphyry-soft: #3a1f2c;
+    --on-porphyry: #1d0d15;
+    --verdigris: #70cdbb;
+    --verdigris-soft: #16332f;
+    --rust: #f0957d;
+    --rust-soft: #3b211b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --stone: #12151b;
+  --surface: #1b2028;
+  --ink: #e8eaed;
+  --muted: #9aa3af;
+  --line: #333b47;
+  --porphyry: #e293b4;
+  --porphyry-soft: #3a1f2c;
+  --on-porphyry: #1d0d15;
+  --verdigris: #70cdbb;
+  --verdigris-soft: #16332f;
+  --rust: #f0957d;
+  --rust-soft: #3b211b;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  background: var(--stone);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.75;
+  padding-block: 20px 56px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+.app {
+  max-width: 34rem;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--verdigris); outline-offset: 2px; }
+
+/* ---------- 見出し ---------- */
+.masthead { display: flex; flex-direction: column; gap: 2px; }
+.masthead__auc {
+  font-family: var(--font-latin);
+  font-size: var(--step--1);
+  letter-spacing: 0.14em;
+  color: var(--porphyry);
+  margin: 0;
+}
+.masthead__name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--step-3);
+  line-height: 1.25;
+  margin: 0;
+  text-wrap: balance;
+}
+.masthead__sub { margin: 0; color: var(--muted); font-size: var(--step--1); }
+
+/* ---------- 切替タブ ---------- */
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.tabs__btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 10px 8px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--muted);
+}
+.tabs__btn + .tabs__btn { border-left: 1px solid var(--line); }
+.tabs__btn[aria-selected="true"] { background: var(--porphyry); color: var(--on-porphyry); }
+
+.view { display: flex; flex-direction: column; gap: 20px; }
+
+/* ---------- 今日の三問 ---------- */
+.progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+.progress__num { font-family: var(--font-latin); letter-spacing: 0.12em; color: var(--ink); }
+
+.q { display: flex; flex-direction: column; gap: 14px; }
+.q__kind {
+  margin: 0;
+  font-size: var(--step--1);
+  font-weight: 700;
+  color: var(--porphyry);
+  letter-spacing: 0.06em;
+}
+.q__text {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--step-2);
+  line-height: 1.45;
+  text-wrap: balance;
+}
+.q__hint { margin: 0; color: var(--muted); font-size: var(--step--1); }
+
+.opts { display: flex; flex-direction: column; gap: 10px; }
+.opt {
+  appearance: none;
+  display: grid;
+  grid-template-columns: 2.25rem 1fr;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 12px 14px 12px 10px;
+  cursor: pointer;
+  min-width: 0;
+}
+.opt:hover:not(:disabled) { border-color: var(--porphyry); }
+.opt:disabled { cursor: default; }
+.opt__mark {
+  font-family: var(--font-latin);
+  font-size: var(--step--1);
+  letter-spacing: 0.05em;
+  text-align: center;
+  color: var(--muted);
+}
+.opt__body { min-width: 0; display: flex; flex-direction: column; }
+.opt__title { font-weight: 700; line-height: 1.5; }
+.opt__meta { font-size: var(--step--1); color: var(--muted); font-variant-numeric: tabular-nums; }
+.opt.is-picked { border-color: var(--porphyry); background: var(--porphyry-soft); }
+.opt.is-picked .opt__mark { color: var(--porphyry); font-weight: 700; }
+.opt.is-right { border-color: var(--verdigris); background: var(--verdigris-soft); }
+.opt.is-right .opt__mark { color: var(--verdigris); }
+.opt.is-wrong { border-color: var(--rust); background: var(--rust-soft); }
+.opt.is-wrong .opt__mark { color: var(--rust); }
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--porphyry);
+  background: var(--porphyry);
+  color: var(--on-porphyry);
+  border-radius: 3px;
+  padding: 12px 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn:disabled { opacity: 0.45; cursor: default; }
+.btn--ghost { background: transparent; color: var(--porphyry); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+.verdict {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--step-1);
+}
+.verdict.is-right { color: var(--verdigris); }
+.verdict.is-wrong { color: var(--rust); }
+
+.explain { display: flex; flex-direction: column; gap: 14px; border-top: 1px solid var(--line); padding-top: 14px; }
+.note { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.note__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
+.note__year { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--porphyry); }
+.note__title { font-weight: 700; }
+.note__desc { margin: 0; font-size: 0.9375rem; }
+.note__link {
+  align-self: flex-start;
+  appearance: none;
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: var(--step--1);
+  color: var(--verdigris);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.chip {
+  display: inline-block;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  padding: 0 7px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.chip--world { border-color: var(--verdigris); color: var(--verdigris); }
+
+/* 結果 */
+.result { display: flex; flex-direction: column; gap: 18px; }
+.result__score {
+  margin: 0;
+  font-family: var(--font-latin);
+  font-size: 3rem;
+  line-height: 1.1;
+  letter-spacing: 0.08em;
+  color: var(--porphyry);
+}
+.result__score small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  letter-spacing: 0;
+  color: var(--ink);
+  margin-top: 6px;
+}
+.result__streak { margin: 0; color: var(--muted); }
+
+/* ---------- 年表 ---------- */
+.tl-tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px 16px;
+  font-size: var(--step--1);
+  color: var(--muted);
+}
+.tl-tools label { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; color: var(--ink); }
+.tl-tools input { width: 1.1rem; height: 1.1rem; accent-color: var(--porphyry); }
+
+.era { display: flex; flex-direction: column; gap: 4px; }
+.era__head { display: flex; flex-direction: column; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.era__latin {
+  font-family: var(--font-latin);
+  font-size: var(--step-1);
+  letter-spacing: 0.16em;
+  color: var(--porphyry);
+  margin: 0;
+  line-height: 1.4;
+}
+.era__name { margin: 0; font-size: var(--step--1); color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.road { list-style: none; margin: 0; padding: 8px 0 0; position: relative; }
+.road::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--line);
+}
+.ev { position: relative; padding-left: 26px; }
+.ev::before {                         /* モザイクの石 */
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.05rem;
+  width: 10px;
+  height: 10px;
+  background: var(--porphyry);
+}
+.ev--world { padding-left: 46px; }
+.ev--world::before {
+  left: 1px;
+  width: 8px;
+  height: 8px;
+  background: var(--stone);
+  border: 2px solid var(--verdigris);
+  transform: rotate(45deg);
+}
+.ev.is-seen:not(.ev--world)::before { box-shadow: 0 0 0 3px var(--porphyry-soft); }
+.road.hide-world .ev--world { display: none; }
+
+.ev details { min-width: 0; }
+.ev summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 8px 0;
+  display: grid;
+  grid-template-columns: 6.25rem 1fr;
+  gap: 8px;
+  align-items: baseline;
+}
+.ev summary::-webkit-details-marker { display: none; }
+.ev__year { font-variant-numeric: tabular-nums; font-size: var(--step--1); color: var(--muted); white-space: nowrap; }
+.ev__title { font-weight: 700; line-height: 1.5; min-width: 0; }
+.ev--world .ev__title { font-weight: 500; }
+.ev--world summary { grid-template-columns: 5rem 1fr; }
+.ev__body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 2px 0 14px;
+  font-size: 0.9375rem;
+}
+.ev__body p { margin: 0; }
+.ev__place { color: var(--verdigris); }
+.ev__auc { font-size: var(--step--1); color: var(--muted); }
+.ev__auc span { font-family: var(--font-latin); letter-spacing: 0.1em; }
+.ev.is-flash summary { background: var(--porphyry-soft); }
+
+.foot { margin: 0; font-size: var(--step--1); color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
+
+@media (max-width: 380px) {
+  .q__text { font-size: var(--step-1); }
+  .ev summary { grid-template-columns: 5.5rem 1fr; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .opt, .tabs__btn { transition: background-color 0.15s, border-color 0.15s; }
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>一日一ローマ</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Shippori+Mincho:wght@700;800&family=Zen+Kaku+Gothic+New:wght@500;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--APP-->
+<div class="app">
+  <header class="masthead">
+    <p class="masthead__auc" id="auc-today">AB VRBE CONDITA</p>
+    <h1 class="masthead__name">一日一ローマ</h1>
+    <p class="masthead__sub">1日3問で、古代ローマの1200年と同じ頃の世界をつなげて覚える。</p>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="画面の切り替え">
+    <button class="tabs__btn" id="tab-today" role="tab" aria-controls="view-today" aria-selected="true" type="button">今日の三問</button>
+    <button class="tabs__btn" id="tab-nenpyo" role="tab" aria-controls="view-nenpyo" aria-selected="false" type="button">年表</button>
+  </div>
+
+  <main>
+    <section class="view" id="view-today" role="tabpanel" aria-labelledby="tab-today"></section>
+    <section class="view" id="view-nenpyo" role="tabpanel" aria-labelledby="tab-nenpyo" hidden></section>
+  </main>
+
+  <p class="foot">試作版です。年代と説明は公開前に資料との照合が必要です。「伝承」「頃」の付いた年は、はっきり決まっていない年代です。</p>
+</div>
+<!--/APP-->
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
