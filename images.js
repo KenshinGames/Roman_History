@@ -1,0 +1,34 @@
+/* 一日一ローマ — 絵と写真の一覧
+ * キーは data.js の出来事の id。"mosaic" はモザイクが完成したときに現れる絵。
+ * すべて Wikimedia Commons から取得し、縮小して使っている。作者とライセンスは各項目のとおり。
+ * pos は切り抜くときの中心（CSS の object-position）。
+ */
+window.ROMA_IMAGES = {
+  "mosaic": {"file": "mosaic.jpg", "w": 960, "h": 651, "cap": "トマス・コール《帝国の推移：完成》1836年", "credit": "Thomas Cole", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3ACole_Thomas_The_Consummation_The_Course_of_the_Empire_1836.jpg"},
+  "r-753": {"file": "r-753.jpg", "w": 960, "h": 720, "cap": "《カピトリーノの雌狼》カピトリーノ美術館", "credit": "作者不詳", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3ACapitoline_she-wolf_Musei_Capitolini_MC1181.jpg"},
+  "r-509": {"file": "r-509.jpg", "w": 960, "h": 541, "cap": "フォロ・ロマーノ（ローマ）", "credit": "Nicholas Hartmann", "license": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File%3ARoman_Forum_looking_East_panorama.jpg"},
+  "r-312": {"file": "r-312.jpg", "w": 960, "h": 686, "cap": "アッピア旧街道（ローマ）", "credit": "Palickap", "license": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File%3ARoma%2C_Via_Appia_Antica_%2801%29.jpg"},
+  "r-218": {"file": "r-218.jpg", "w": 960, "h": 589, "cap": "ターナー《吹雪：アルプスを越えるハンニバルとその軍勢》1812年", "credit": "J. M. W. Turner", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3AJoseph_Mallord_William_Turner_081.jpg"},
+  "r-216": {"file": "r-216.jpg", "w": 960, "h": 671, "cap": "ジョン・トランブル《カンネーの戦いにおけるアエミリウス・パウルスの死》1773年", "credit": "John Trumbull", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3AThe_Death_of_Paulus_Aemilius_at_the_Battle_of_Cannae_%28Yale_University_Art_Gallery_scan%29.jpg"},
+  "r-202": {"file": "r-202.jpg", "w": 960, "h": 742, "cap": "コルネリス・コルト《ザマの戦い》1567年", "credit": "Cornelis Cort", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3ASlaget_ved_Zama_-_Cornelis_Cort%2C_1567.jpg"},
+  "r-133": {"file": "r-133.jpg", "w": 960, "h": 652, "cap": "ウジェーヌ・ギヨーム《グラックス兄弟》1853年", "credit": "Jean-Baptiste Claude Eugène Guillaume", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3AEugene_Guillaume_-_the_Gracchi.jpg", "pos": "50% 25%"},
+  "r-73": {"file": "r-73.jpg", "w": 960, "h": 740, "cap": "ヘルマン・フォーゲル《スパルタクスの死》1882年", "credit": "Hermann Vogel", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3ATod_des_Spartacus_by_Hermann_Vogel.jpg"},
+  "r-58": {"file": "r-58.jpg", "w": 960, "h": 640, "cap": "リオネル・ロワイエ《カエサルの足元に武器を投げ出すウェルキンゲトリクス》1899年", "credit": "Lionel Royer", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3ALionel_Royer_-_Vercingetorix_Throwing_down_His_Weapons_at_the_feet_of_Julius_Caesar.jpg"},
+  "r-44": {"file": "r-44.jpg", "w": 960, "h": 545, "cap": "ヴィンチェンツォ・カムッチーニ《カエサルの死》1806年", "credit": "Vincenzo Camuccini", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3AVincenzo_Camuccini_-_La_morte_di_Cesare.jpg"},
+  "r-31": {"file": "r-31.jpg", "w": 960, "h": 675, "cap": "ラウレイス・ア・カストロ《アクティウムの海戦》1672年", "credit": "Laureys a Castro", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3ACastro_Battle_of_Actium.jpg"},
+  "r-27": {"file": "r-27.jpg", "w": 640, "h": 960, "cap": "《プリマ・ポルタのアウグストゥス》ヴァチカン美術館", "credit": "Till Niermann", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3AStatue-Augustus.jpg", "pos": "50% 12%"},
+  "r9": {"file": "r9.jpg", "w": 685, "h": 960, "cap": "オットー・アルベルト・コッホ《ウァルスの戦い》1909年", "credit": "Otto Albert Koch", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3AOtto_Albert_Koch_Varusschlacht_1909.jpg", "pos": "50% 35%"},
+  "r64": {"file": "r64.jpg", "w": 960, "h": 771, "cap": "ユベール・ロベール《ローマの大火》1785年", "credit": "Hubert Robert", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3AHubert_Robert_-_The_Fire_of_Rome_-_Google_Art_Project.jpg"},
+  "r79": {"file": "r79.jpg", "w": 960, "h": 674, "cap": "カール・ブリューロフ《ポンペイ最後の日》1833年", "credit": "Karl Bryullov", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3AKarl_Brullov_-_The_Last_Day_of_Pompeii_-_Google_Art_Project.jpg"},
+  "r80": {"file": "r80.jpg", "w": 960, "h": 569, "cap": "コロッセオ（ローマ）", "credit": "Wilfredor", "license": "CC0", "src": "https://commons.wikimedia.org/wiki/File%3AColosseum_of_Rome_and_Roman_forum.jpg"},
+  "r117": {"file": "r117.jpg", "w": 720, "h": 960, "cap": "トラヤヌスの記念柱（ローマ）", "credit": "Gobbler", "license": "CC BY-SA 3.0", "src": "https://commons.wikimedia.org/wiki/File%3AColonna_Traiana.jpg", "pos": "50% 30%"},
+  "r122": {"file": "r122.jpg", "w": 960, "h": 640, "cap": "ハドリアヌスの長城（イングランド北部）", "credit": "Adam Cuerden", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3AMilecastle_39_on_Hadrian%27s_Wall.jpg"},
+  "r125": {"file": "r125.jpg", "w": 736, "h": 960, "cap": "ジョヴァンニ・パオロ・パニーニ《パンテオンの内部》1734年頃", "credit": "Giovanni Paolo Panini", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3AGiovanni_Paolo_Panini_-_Interior_of_the_Pantheon%2C_Rome_-_Google_Art_Project.jpg", "pos": "50% 20%"},
+  "r212": {"file": "r212.jpg", "w": 960, "h": 575, "cap": "カラカラ浴場（ローマ）", "credit": "Ethan Doyle White", "license": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File%3ABaths_of_Caracalla%2C_facing_Caldarium.jpg"},
+  "r284": {"file": "r284.jpg", "w": 640, "h": 960, "cap": "《四帝分治の皇帝たち》斑岩の群像、ヴェネツィア", "credit": "Nino Barbieri", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3AVenice_%E2%80%93_The_Tetrarchs_03.jpg", "pos": "50% 25%"},
+  "r313": {"file": "r313.jpg", "w": 960, "h": 810, "cap": "コンスタンティヌスの凱旋門（ローマ）", "credit": "NikonZ7II (Paris Orlando)", "license": "CC BY-SA 4.0", "src": "https://commons.wikimedia.org/wiki/File%3AArch_of_Constantine_%28Rome%29_-_South_side%2C_from_Via_triumphalis.jpg"},
+  "r325": {"file": "r325.jpg", "w": 720, "h": 960, "cap": "ニケーア公会議を描いたイコン", "credit": "Jjensen", "license": "CC BY-SA 3.0", "src": "https://commons.wikimedia.org/wiki/File%3ANikea-arius.png", "pos": "50% 30%"},
+  "r330": {"file": "r330.jpg", "w": 960, "h": 540, "cap": "コンスタンティノープルの城壁（イスタンブル）", "credit": "Bigdaddy1204", "license": "CC BY-SA 3.0", "src": "https://commons.wikimedia.org/wiki/File%3AWalls_of_Constantinople.JPG"},
+  "r375": {"file": "r375.jpg", "w": 960, "h": 550, "cap": "ウルピアーノ・チェカ《蛮族の侵入》1887年", "credit": "Ulpiano Checa", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3AUlpiano_Checa_La_invasi%C3%B3n_de_los_b%C3%A1rbaros.jpg"},
+  "r410": {"file": "r410.jpg", "w": 960, "h": 596, "cap": "トマス・コール《帝国の推移：破壊》1836年。架空の帝国の滅亡を描いた連作の1枚", "credit": "Thomas Cole", "license": "Public domain", "src": "https://commons.wikimedia.org/wiki/File%3ACole_Thomas_The_Course_of_Empire_Destruction_1836.jpg"}
+};
